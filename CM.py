@@ -13,11 +13,11 @@
 ################################ REQUIRED PACKAGES  #######################################
 import numpy as np
 import pylab as py
-import scipy as sp
+import scipy as sp # 
 import pandas as pd
-import seaborn as sn
+import seaborn as sn # pacote que plota a matrix de confusão 
 import matplotlib.pyplot as plt
-from string import ascii_uppercase
+from string import ascii_uppercase # pacote que plota letras no gráfico
 from pandas import Series, DataFrame
 from sklearn.metrics import confusion_matrix
 ###########################################################################################
@@ -63,7 +63,7 @@ print(tn, fp, fn, tp)
 columns = ['class %s' %(i) for i in list(ascii_uppercase)[0:len(np.unique(y_true1))]]
 
 confm = confusion_matrix(y_true1, y_pred1)
-df_cm = DataFrame(confm, index=columns, columns=columns)
+df_cm = DataFrame(C1, index=columns, columns=columns)
 
 ax = sn.heatmap(df_cm, cmap='Oranges', annot=True)
 
