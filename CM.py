@@ -58,21 +58,21 @@ print('Example 3:')
 print(tn, fp, fn, tp)
 
 
-# Plotting confusion matrix
+# Plotting confusion matrix from examples
 
 
-columns = ['class %s' %(i) for i in list(ascii_uppercase)[0:len(np.unique(y_true2))]]
+#columns = ['class %s' %(i) for i in list(ascii_uppercase)[0:len(np.unique(y_true2))]]
 
-confm = confusion_matrix(y_true2, y_pred2)
-df_cm = DataFrame(confm, index=columns, columns=columns)
+#confm = confusion_matrix(y_true2, y_pred2)
+#df_cm = DataFrame(confm, index=columns, columns=columns)
 
-ax = sn.heatmap(df_cm, cmap='Oranges', annot=True)
+#ax = sn.heatmap(df_cm, cmap='Oranges', annot=True)
 
-plt.show()
+#plt.show()
 
 
 # Application in a synthetic scennario:
-# There are two input vectors. One is the predicted code vectors provided by the model os parameters from neural network. Second one is the real set of code vectors. 
+# There are two input vectors. One is the predicted code vectors provided by the model of parameters arising from neural network. Second one is the real set of code vectors. 
 
 
 #OBS: The data used in this secton is related to my PhD thesis. Therefore is sigilous and omited. In a near future it will be release. 
@@ -86,6 +86,60 @@ df=df.drop('Error', axis=1)# Error
 df=df.drop('Counter',axis=1)# Counter
 print(df)
 
+# confusion matrix Inputs:
+
+y_true = df.iloc[:,0]
+y_pred = df.iloc[:,1]
 
 
+CM = confusion_matrix(y_true,y_pred)
 
+print('Synthetics data Confusion Matrix')
+print(CM)
+
+# Plotting
+
+
+#columns = ['class %s' %(i) for i in list(ascii_uppercase)[0:len(np.unique(y_true))]]
+
+#confm = confusion_matrix(y_true, y_pred)
+#df_cm = DataFrame(confm, index=columns, columns=columns)
+
+#ax = sn.heatmap(df_cm, cmap='Oranges', annot=True)
+
+#plt.show()
+
+
+# Aplication for a Real Scennario:
+
+
+dataR = pd.read_table("dado_class_REAL_teste2.txt", delim_whitespace=True, names=('Counter','Class' ,'Predicted(ANN)', 'Delimiter','Calculated(true)','Error'))
+dfr=pd.DataFrame(dataR, columns=['Counter','Class', 'Predicted(ANN)','Delimiter','Calculated(true)','Error'])
+dfr=dfr.drop('Class',axis=1) #rips of counter Class String colunm
+dfr=dfr.drop('Delimiter',axis=1)#rips of Delimiter 
+dfr=dfr.drop('Error', axis=1)# Error
+dfr=dfr.drop('Counter',axis=1)# Counter
+print(dfr)
+
+# confusion matrix Inputs:
+
+y_trueR = dfr.iloc[:,0]
+y_predR = dfr.iloc[:,1]
+
+
+CMR = confusion_matrix(y_trueR,y_predR)
+
+print('Real data Confusion Matrix')
+print(CMR)
+
+# Plotting
+
+
+columns = ['class %s' %(i) for i in list(ascii_uppercase)[0:len(np.unique(y_trueR))]]
+
+confmR = confusion_matrix(y_trueR, y_predR)
+df_cmR = DataFrame(confmR, index=columns, columns=columns)
+
+ax = sn.heatmap(df_cmR, cmap='Oranges', annot=True)
+
+plt.show()
