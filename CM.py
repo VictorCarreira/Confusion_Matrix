@@ -101,14 +101,14 @@ print(CM)
 # Plotting
 
 
-#columns = ['class %s' %(i) for i in list(ascii_uppercase)[0:len(np.unique(y_true))]]
+columns = ['class %s' %(i) for i in list(ascii_uppercase)[0:len(np.unique(y_true))]]
 
-#confm = confusion_matrix(y_true, y_pred)
-#df_cm = DataFrame(confm, index=columns, columns=columns)
+confm = confusion_matrix(y_true, y_pred)
+df_cm = DataFrame(confm, index=columns, columns=columns)
 
-#ax = sn.heatmap(df_cm, cmap='Oranges', annot=True)
+ax = sn.heatmap(df_cm, cmap='Oranges', annot=True)
 
-#plt.show()
+plt.show()
 
 
 # Aplication for a Real Scennario:
@@ -136,11 +136,11 @@ print(CMR)
 # Plotting
 
 
-columns = ['class %s' %(i) for i in list(ascii_uppercase)[0:len(np.unique(y_trueR))]]
+#columns = ['class %s' %(i) for i in list(ascii_uppercase)[0:len(np.unique(y_trueR))]]
 
-confmR = confusion_matrix(y_trueR, y_predR)
-df_cmR = DataFrame(confmR, index=columns, columns=columns)
+#confmR = confusion_matrix(y_trueR, y_predR)
+#df_cmR = DataFrame(confmR, index=columns, columns=columns)
 
-ax = sn.heatmap(df_cmR, cmap='Oranges', annot=True)
+#ax = sn.heatmap(df_cmR, cmap='Oranges', annot=True)
 
-plt.show()
+#plt.show()
