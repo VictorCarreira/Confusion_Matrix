@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 #This program implements a confusion matrix 
 #Author: Victor Carreira
 
